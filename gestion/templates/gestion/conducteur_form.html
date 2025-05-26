@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un conducteur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl bg-white p-8 rounded shadow">
+        <h1 class="text-3xl font-bold mb-6 text-center">Ajouter un conducteur et sa moto</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="mb-4 p-4 rounded
+                    {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" class="space-y-6">
+            {% csrf_token %}
+
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Informations du Conducteur</h2>
+                {{ conducteur_form.as_p }}
+            </div>
+
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Informations de la Moto</h2>
+                {{ moto_form.as_p }}
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des conducteurs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<div class="container mx-auto px-4 py-6">
+    <h2 class="text-2xl font-bold mb-4">Liste des conducteurs</h2>
+
+    {% if messages %}
+    <div class="mb-4">
+        {% for message in messages %}
+        <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-2">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+        <thead>
+        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-left">Nom</th>
+            <th class="py-3 px-6 text-left">Prénoms</th>
+            <th class="py-3 px-6 text-left">QR Code</th>
+            <th class="py-3 px-6 text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+        {% for conducteur in conducteurs %}
+        <tr class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="py-3 px-6 text-left">{{ conducteur.nom }}</td>
+            <td class="py-3 px-6 text-left">{{ conducteur.prenoms }}</td>
+            <td class="py-3 px-6 text-left">
+                <img src="{{ conducteur.qr_code.url }}" alt="QR Code" class="w-16">
+            </td>
+            <td class="py-3 px-6 text-center">
+                <a href="{% url 'modifier_conducteur' conducteur.id %}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2">
+                    Modifier
+                </a>
+                <a href="{% url 'supprimer_conducteur' conducteur.id %}" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                    Supprimer
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

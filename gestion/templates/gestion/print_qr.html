@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Impression du QR Code</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .carte {
+            width: 300px;
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+        img { width: 100px; height: auto; }
+        .btn-imprimer {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carte">
+        <h2>{{ conducteur.nom }} {{ conducteur.prenoms }}</h2>
+        <img src="{{ conducteur.photo.url }}" alt="Photo du conducteur"><br><br>
+        <img src="{{ conducteur.qr_code.url }}" alt="QR Code"><br>
+        <p>{{ conducteur.numero_identification }}</p>
+    </div>
+
+    <div class="btn-imprimer">
+        <button onclick="window.print()">Imprimer</button>
+    </div>
+</body>
+</html>

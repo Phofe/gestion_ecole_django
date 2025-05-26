@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accès Refusé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #f8d7da;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #f5c6cb;
+        }
+        h1 {
+            color: #721c24;
+        }
+        p {
+            color: #721c24;
+        }
+        a {
+            text-decoration: none;
+            background: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        a:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚫 Accès Refusé</h1>
+        <p>Désolé, vous n'avez pas les autorisations nécessaires pour accéder à cette page.</p>
+        <a href="{% url 'dashboard' %}">Retour au Tableau de Bord</a>
+    </div>
+</body>
+</html>
+

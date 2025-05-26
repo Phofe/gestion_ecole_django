@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nouvel Agent | ZemiConnect</title>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen">
+    <!-- Logo fixe en haut à droite -->
+    <div class="fixed top-4 right-4 z-10">
+        <div class="bg-indigo-100 p-3 rounded-2xl hover:bg-indigo-200 transition-colors shadow-sm">
+            <img src="../../../media/img/logo.jpg" alt="Logo ZemiConnect" class="w-20 h-20 md:w-24 md:h-24">
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <!-- En-tête -->
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500">
+                        Nouvel Agent
+                    </span>
+                </h2>
+                <p class="text-gray-600">Créez un compte pour un agent de contrôle</p>
+            </div>
+
+            <!-- Formulaire -->
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+
+                <!-- Champ Nom d'utilisateur -->
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                        placeholder="Saisissez un identifiant unique">
+                </div>
+
+                <!-- Champ Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Adresse Email</label>
+                    <input type="email" name="email" id="email" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                        placeholder="exemple@zemiconnect.bj">
+                </div>
+
+                <!-- Champ Mot de passe -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
+                    <input type="password" name="password" id="password" required
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                        placeholder="••••••••">
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity shadow-md flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 019.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                    </svg>
+                    Créer l'agent
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

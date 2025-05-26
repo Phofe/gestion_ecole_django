@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<div class="max-w-3xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Modifier un agent</h2>
+
+    {# Django messages #}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="mb-4 px-4 py-3 rounded {{ message.tags|default:'info' }} bg-{{ message.tags }}-100 text-{{ message.tags }}-800 border border-{{ message.tags }}-300">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Section Utilisateur -->
+        <div class="space-y-4">
+            <h3 class="text-lg font-medium text-gray-700">Informations de l'utilisateur</h3>
+            {{ user_form.non_field_errors }}
+            {% for field in user_form %}
+                <div>
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <p class="text-sm text-red-600 mt-1">{{ field.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Section Agent -->
+        <div class="space-y-4 pt-6 border-t border-gray-200">
+            <h3 class="text-lg font-medium text-gray-700">Informations de l'agent</h3>
+            {{ agent_form.non_field_errors }}
+            {% for field in agent_form %}
+                <div>
+                    <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <p class="text-sm text-red-600 mt-1">{{ field.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Boutons -->
+        <div class="flex justify-end pt-6 space-x-4">
+            <a href="{% url 'dashboard' %}" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md shadow-sm">
+                Annuler
+            </a>
+            <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-md shadow-sm">
+                Enregistrer
+            </button>
+        </div>
+    </form>
+</div>
+</html>
