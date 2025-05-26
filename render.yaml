@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: taxi-gestion
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn taxi.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: taxi.settings
+      - fromDatabase:
+          name: taxi-db
+          property: connectionString
+
+databases:
+  - name: taxi-db
